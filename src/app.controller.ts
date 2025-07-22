@@ -1,12 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Req, Render } from '@nestjs/common';
+import { Request } from 'express';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Render('home')
+  getHome(@Req() req: Request) {
+    const account = req.session?.['account'];
+    return {
+      title: 'Home',
+      user: account
+        ? {
+            name: account.name,
+            username: account.username,
+            homeAccountId: account.homeAccountId,
+          }
+        : null,
+    };
   }
 }

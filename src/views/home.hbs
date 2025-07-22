@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title">Welcome to Azure AD Authentication Demo</h1>
+                <p class="card-text lead">This demo shows how to implement Microsoft Azure AD authentication with NestJS.</p>
+                
+                {{#if user}}
+                    <div class="alert alert-success">
+                        <h4>Hello, {{user.name}}!</h4>
+                        <p>You are successfully authenticated.</p>
+                    </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="/profile" class="btn btn-primary">View Profile</a>
+                        <a href="/id" class="btn btn-info">View ID Token</a>
+                        <a href="/auth/signout" class="btn btn-outline-danger">Sign Out</a>
+                    </div>
+                {{else}}
+                    <div class="alert alert-info">
+                        <p>Please sign in to access your profile and protected resources.</p>
+                    </div>
+                    <a href="/auth/signin" class="btn btn-primary btn-lg">
+                        <svg width="16" height="16" class="me-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        Sign In with Microsoft
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+
+        {{#unless user}}
+        <div class="mt-4">
+            <h3>Features:</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">🔐 Secure Authentication</h5>
+                            <p class="card-text">Azure AD provides enterprise-grade security for user authentication.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">👤 User Profile</h5>
+                            <p class="card-text">Access user profile information from Azure AD.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">🎫 Token Management</h5>
+                            <p class="card-text">View and manage ID tokens and access tokens.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/unless}}
+    </div>
+</div>
