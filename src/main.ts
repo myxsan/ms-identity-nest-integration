@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
-import {join} from 'path';
+import { join } from 'path';
 
 // Load environment variables before creating the app
 dotenv.config();
